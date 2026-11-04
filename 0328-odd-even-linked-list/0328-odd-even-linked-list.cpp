@@ -11,19 +11,15 @@
 #define TOGGLE(x) (x) ^= true;
 class Solution {
 private: 
-    ListNode* oddHead = nullptr;
-    ListNode* evenHead = nullptr;
-    ListNode* curOdd = nullptr;
-    ListNode* curEven = nullptr;
     bool isOdd = true;
 public:
     ListNode* oddEvenList(ListNode* head) {
         if(head == nullptr || head->next == nullptr || head->next->next == nullptr) return head;
 
-        oddHead = head;
-        evenHead = head->next;
-        curOdd = oddHead;
-        curEven = evenHead;
+        ListNode* oddHead = head;
+        ListNode* evenHead = head->next;
+        ListNode* curOdd = oddHead;
+        ListNode* curEven = evenHead;
 
         for (ListNode* cur = evenHead->next; cur != nullptr; cur = cur->next) {
             if (isOdd) {
