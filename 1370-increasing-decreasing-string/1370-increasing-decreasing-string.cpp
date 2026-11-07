@@ -9,7 +9,7 @@ public:
         }
 
         string res = "";
-        res.reserve();
+        res.reserve(s.size());
 
         while (res.size() < len) {
             for (int i = 0; i < 26; i++) {
