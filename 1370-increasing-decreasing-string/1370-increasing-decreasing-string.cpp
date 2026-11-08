@@ -11,7 +11,7 @@ public:
         string res = "";
         res.reserve(s.size());
 
-        while (res.size() < len) {
+        while (res.size() != len) {
             for (int i = 0; i < 26; i++) {
                 if (freq[i] > 0){
                     res.push_back('a' + i);
