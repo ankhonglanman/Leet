@@ -17,18 +17,6 @@ public:
         to_visit.push({sr, sc});
         image[sr][sc] = color;
 
-        vector<vector<bool>> visited;
-        visited.reserve(rows);
-
-        for (int i = 0; i < rows; i++) {
-            vector<bool> vec;
-            vec.reserve(cols);
-            for (int j = 0; j < cols; j++) {
-                vec.push_back(false);
-            }
-            visited.push_back(vec);
-        }
-
         while (!to_visit.empty()) {
             coor cur = to_visit.front();
             to_visit.pop();
@@ -39,11 +27,16 @@ public:
 
                 if (ihere < 0 || ihere >= rows || jhere < 0 || jhere >= cols) continue;
 
-                if (!visited[ihere][jhere] && image[ihere][jhere] == sColor) {
-                    visited[ihere][jhere] = true;
+                if (image[ihere][jhere] == sColor) {
                     to_visit.push({ihere, jhere});
-                    image[ihere][jhere] = color;
+                    image[ihere][jhere] = INT_MAX;
                 } 
+            }
+        }
+
+        for (auto& row : image) {
+            for (auto& pixel : row) {
+                if (pixel == INT_MAX) pixel = color;
             }
         }
 
